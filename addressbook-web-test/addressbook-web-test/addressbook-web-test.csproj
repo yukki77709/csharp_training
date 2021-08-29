@@ -62,6 +62,7 @@
     <Compile Include="AccountData.cs" />
     <Compile Include="ContactHelper.cs" />
     <Compile Include="GroupHelper.cs" />
+    <Compile Include="HelperBase.cs" />
     <Compile Include="LoginHelper.cs" />
     <Compile Include="NavigationHelper.cs" />
     <Compile Include="TestBase.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="GroupRemovalTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
