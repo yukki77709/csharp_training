@@ -15,7 +15,7 @@ namespace WebAddressbookTests
         public void MetodGroupCreationTests()
         {
             OpenHomePage();
-            Login(new AccountData ("admin", "secret") );
+            loginHelper.Login(new AccountData ("admin", "secret") );
             GoToGroupsPage();
             InitNewGroupPage();
             GroupData group = new GroupData("qqq");
@@ -24,7 +24,7 @@ namespace WebAddressbookTests
             FillGroupForm(group);
             SubmitGroupCreation();
             ReturnToGroupPage();
-            Logout();
+            loginHelper.Logout();
         }
 
     }

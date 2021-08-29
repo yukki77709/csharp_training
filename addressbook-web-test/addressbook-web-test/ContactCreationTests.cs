@@ -14,12 +14,12 @@ namespace WebAddressbookTests
         public void MetodContactCreationTests()
         {
             OpenHomePage();
-            Login(new AccountData("admin", "secret"));
+            loginHelper.Login(new AccountData("admin", "secret"));
             GoToNewContactPage();
             ContactData contact = new ContactData("Юлия1", "Степанова1");
             FillContactForm(contact);
             SubmitContactCreation();
-            Logout();
+            loginHelper.Logout();
         }
 
     }
