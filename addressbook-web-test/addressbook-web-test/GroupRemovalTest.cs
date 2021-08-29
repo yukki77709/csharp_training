@@ -13,9 +13,9 @@ namespace WebAddressbookTests
         [Test]
         public void MetodGroupRemovalTests()
         {
-            OpenHomePage();
+            navigationHelper.OpenHomePage();
             loginHelper.Login(new AccountData("admin", "secret"));
-            GoToGroupsPage();
+            navigationHelper.GoToGroupsPage();
             SelectGroup(1);
             RemoveGroup();
             ReturnToGroupPage();

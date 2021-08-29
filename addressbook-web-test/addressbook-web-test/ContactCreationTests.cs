@@ -13,9 +13,9 @@ namespace WebAddressbookTests
         [Test]
         public void MetodContactCreationTests()
         {
-            OpenHomePage();
+            navigationHelper.OpenHomePage();
             loginHelper.Login(new AccountData("admin", "secret"));
-            GoToNewContactPage();
+            navigationHelper.GoToNewContactPage();
             ContactData contact = new ContactData("Юлия1", "Степанова1");
             FillContactForm(contact);
             SubmitContactCreation();

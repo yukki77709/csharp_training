@@ -16,6 +16,7 @@ namespace WebAddressbookTests
         protected string baseURL;
 
         protected LoginHelper loginHelper;
+        protected NavigationHelper navigationHelper;
 
         [SetUp]
         public void SetupTest()
@@ -25,6 +26,7 @@ namespace WebAddressbookTests
             verificationErrors = new StringBuilder();
 
             loginHelper = new LoginHelper(driver);
+            navigationHelper = new NavigationHelper(driver, baseURL);
         }
 
         [TearDown]
@@ -39,11 +41,6 @@ namespace WebAddressbookTests
                 // Ignore errors if unable to close the browser
             }
             Assert.AreEqual("", verificationErrors.ToString());
-        }
-
-        protected void Logout()
-        {
-            driver.FindElement(By.LinkText("Logout")).Click();
         }
 
         protected void SubmitContactCreation()
@@ -64,10 +61,6 @@ namespace WebAddressbookTests
 
         }
 
-        protected void GoToNewContactPage()
-        {
-            driver.FindElement(By.LinkText("add new")).Click();
-        }
 
         protected void SubmitGroupCreation()
         {
@@ -89,10 +82,6 @@ namespace WebAddressbookTests
             driver.FindElement(By.XPath("//div[@id='content']/form/span[" + index + "]/input")).Click();
         }
 
-        protected void GoToGroupsPage()
-        {
-            driver.FindElement(By.LinkText("groups")).Click();
-        }
 
         protected void FillGroupForm(GroupData group)
         {
@@ -113,10 +102,6 @@ namespace WebAddressbookTests
             driver.FindElement(By.XPath("//form[@action='/addressbook/group.php']")).Click();
         }
 
-        protected void OpenHomePage()
-        {
-            driver.Navigate().GoToUrl(baseURL + "/addressbook/");
-        }
 
     }
 }

@@ -14,9 +14,9 @@ namespace WebAddressbookTests
         [Test]
         public void MetodGroupCreationTests()
         {
-            OpenHomePage();
+            navigationHelper.OpenHomePage();
             loginHelper.Login(new AccountData ("admin", "secret") );
-            GoToGroupsPage();
+            navigationHelper.GoToGroupsPage();
             InitNewGroupPage();
             GroupData group = new GroupData("qqq");
             group.Header = "lll";
