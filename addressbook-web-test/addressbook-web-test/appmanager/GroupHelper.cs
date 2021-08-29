@@ -14,6 +14,7 @@ namespace WebAddressbookTests
     {
         public GroupHelper(IWebDriver driver) : base(driver)
         {
+
         }
 
         public void SubmitGroupCreation()
@@ -53,7 +54,6 @@ namespace WebAddressbookTests
         public void InitNewGroupPage()
         {
             driver.FindElement(By.Name("new")).Click();
-            driver.FindElement(By.XPath("//form[@action='/addressbook/group.php']")).Click();
         }
     }
 }
