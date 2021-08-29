@@ -17,8 +17,8 @@ namespace WebAddressbookTests
             loginHelper.Login(new AccountData("admin", "secret"));
             navigationHelper.GoToNewContactPage();
             ContactData contact = new ContactData("Юлия1", "Степанова1");
-            FillContactForm(contact);
-            SubmitContactCreation();
+            contactHelper.FillContactForm(contact);
+            contactHelper.SubmitContactCreation();
             loginHelper.Logout();
         }
 
