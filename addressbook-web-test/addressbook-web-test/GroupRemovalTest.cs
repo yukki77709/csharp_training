@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.UI;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class ContactCreationTests
+    public class UntitledTestCase
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;
@@ -21,7 +21,7 @@ namespace WebAddressbookTests
         public void SetupTest()
         {
             driver = new FirefoxDriver();
-            baseURL = "http://localhost";
+            baseURL = "https://www.google.com/";
             verificationErrors = new StringBuilder();
         }
 
@@ -42,59 +42,22 @@ namespace WebAddressbookTests
         [Test]
         public void TheUntitledTestCaseTest()
         {
-            OpenHomePage();
-            Login(new AccountData("admin", "secret"));
-            GoToNewContactPage();
-            ContactData contact = new ContactData("Юлия1", "Степанова1");
-            FillContactForm(contact);
-            SubmitContactCreation();
-            Logout();
-        }
-
-        private void Logout()
-        {
-            driver.FindElement(By.LinkText("Logout")).Click();
-        }
-
-        private void SubmitContactCreation()
-        {
-            driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();
-        }
-
-        private void FillContactForm(ContactData contact)
-        {
-            driver.FindElement(By.Name("firstname")).Click();
-            driver.FindElement(By.Name("firstname")).Clear();
-            driver.FindElement(By.Name("firstname")).SendKeys(contact.Firstname);
-
-            driver.FindElement(By.Name("lastname")).Click();
-            driver.FindElement(By.Name("lastname")).Clear();
-            driver.FindElement(By.Name("lastname")).SendKeys(contact.Lastname);
-
-            
-        }
-
-        private void GoToNewContactPage()
-        {
-            driver.FindElement(By.LinkText("add new")).Click();
-        }
-
-        private void Login(AccountData account)
-        {
+            driver.Navigate().GoToUrl("http://localhost/addressbook/");
+            driver.FindElement(By.Name("user")).Click();
             driver.FindElement(By.Name("user")).Click();
             driver.FindElement(By.Name("user")).Clear();
-            driver.FindElement(By.Name("user")).SendKeys(account.Username);
+            driver.FindElement(By.Name("user")).SendKeys("admin");
+            driver.FindElement(By.XPath("//*/text()[normalize-space(.)='']/parent::*")).Click();
             driver.FindElement(By.Name("pass")).Click();
             driver.FindElement(By.Name("pass")).Clear();
-            driver.FindElement(By.Name("pass")).SendKeys(account.Password);
+            driver.FindElement(By.Name("pass")).SendKeys("secret");
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
+            driver.FindElement(By.LinkText("groups")).Click();
+            driver.FindElement(By.Name("selected[]")).Click();
+            driver.FindElement(By.XPath("//div[@id='content']/form/input[5]")).Click();
+            driver.FindElement(By.LinkText("group page")).Click();
+            driver.FindElement(By.LinkText("Logout")).Click();
         }
-
-        private void OpenHomePage()
-        {
-            driver.Navigate().GoToUrl(baseURL + "/addressbook/");
-        }
-
         private bool IsElementPresent(By by)
         {
             try
@@ -144,3 +107,4 @@ namespace WebAddressbookTests
         }
     }
 }
+
