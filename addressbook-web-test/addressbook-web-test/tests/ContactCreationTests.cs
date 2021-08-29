@@ -13,13 +13,13 @@ namespace WebAddressbookTests
         [Test]
         public void MetodContactCreationTests()
         {
-            navigationHelper.OpenHomePage();
-            loginHelper.Login(new AccountData("admin", "secret"));
-            navigationHelper.GoToNewContactPage();
+            app.Navigator.OpenHomePage();
+            app.Auth.Login(new AccountData("admin", "secret"));
+            app.Navigator.GoToNewContactPage();
             ContactData contact = new ContactData("Юлия1", "Степанова1");
-            contactHelper.FillContactForm(contact);
-            contactHelper.SubmitContactCreation();
-            loginHelper.Logout();
+            app.Contact.FillContactForm(contact);
+            app.Contact.SubmitContactCreation();
+            app.Auth.Logout();
         }
 
     }
