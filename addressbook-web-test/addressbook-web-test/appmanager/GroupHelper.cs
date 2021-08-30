@@ -26,6 +26,15 @@ namespace WebAddressbookTests
             return this;
         }
 
+        public GroupHelper Removal(int v)
+        {
+            manager.Navigator.GoToGroupsPage();
+            SelectGroup(1);
+            RemoveGroup();
+            ReturnToGroupPage();
+            return this;
+        }
+
         public GroupHelper SubmitGroupCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
