@@ -14,7 +14,7 @@ namespace WebAddressbookTests
     {
         protected IWebDriver driver;
         private StringBuilder verificationErrors;
-        protected string baseURL;
+        public string baseURL;
 
         protected LoginHelper loginHelper;
         protected NavigationHelper navigationHelper;
@@ -27,10 +27,18 @@ namespace WebAddressbookTests
             baseURL = "http://localhost";
             verificationErrors = new StringBuilder();
 
-            loginHelper = new LoginHelper(driver);
-            navigationHelper = new NavigationHelper(driver, baseURL);
-            groupHelper = new GroupHelper(driver);
-            contactHelper = new ContactHelper(driver);
+            loginHelper = new LoginHelper(this);
+            navigationHelper = new NavigationHelper(this);
+            groupHelper = new GroupHelper(this);
+            contactHelper = new ContactHelper(this);
+        }
+
+        public IWebDriver Driver
+        {
+            get
+            {
+                return driver;
+            }
         }
 
         public void Stop()
@@ -72,7 +80,7 @@ namespace WebAddressbookTests
             get
             {
                 return contactHelper;
-    }
+        }
         }
     }
 }

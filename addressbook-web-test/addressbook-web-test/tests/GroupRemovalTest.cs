@@ -13,12 +13,11 @@ namespace WebAddressbookTests
         [Test]
         public void MetodGroupRemovalTests()
         {
-            app.Navigator.OpenHomePage();
-            app.Auth.Login(new AccountData("admin", "secret"));
             app.Navigator.GoToGroupsPage();
-            app.Group.SelectGroup(1);
-            app.Group.RemoveGroup();
-            app.Group.ReturnToGroupPage();
+            app.Group
+                .SelectGroup(1)
+                .RemoveGroup()
+                .ReturnToGroupPage();
             app.Auth.Logout();
         }
     }
